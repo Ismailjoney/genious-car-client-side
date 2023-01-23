@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-const OrderRowCollections = ({ order, handleDelete }) => {
+const OrderRowCollections = ({ order, handleDelete, handdleUpdate }) => {
     const { _id, serviceName, phone, customer, price, service,email, status } = order;
     const [orderService, setOrderService] = useState({})
-
+     
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${service}`)//service dynamic id er kaj kortece
+        fetch(`http://localhost:5000/services/${service}`)//service id
             .then(res => res.json())
             .then(data => setOrderService(data));
     }, [service])
 
     
- 
     return (
         <tr>
             <th>
@@ -25,28 +24,26 @@ const OrderRowCollections = ({ order, handleDelete }) => {
                         <div className="rounded w-24 h-24">
                             {
                                 orderService?.img && 
-                                <img src={orderService.img} alt="Avatar Tailwind CSS Component" />}
+                                <img src={orderService.img} alt="Engine Image" />}
                         </div>
                     </div>
                     <div>
-                      
                         <div className="font-bold">{serviceName}</div>
-                        <div className="font-bold">{price}</div>
-                       
+                        <div className="font-bold">${price}</div>
                     </div>
                 </div>
             </td>
             <td>
             {customer}
                 <br />
-                <span className="badge badge-ghost badge-sm">${phone}</span>
+                <span className="badge badge-ghost badge-sm">{phone}</span>
             </td>
             <td>{email}</td>
-            {/* <th>
+            <th>
                 <button 
-                onClick={() => handleStatusUpdate(_id)}
+               onClick={() => handdleUpdate(_id)}
                 className="btn btn-ghost btn-xs">{status ? status : 'pending'}</button>
-            </th> */}
+            </th>
         </tr>
     );
 };

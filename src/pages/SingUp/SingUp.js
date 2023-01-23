@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { AuthorContext } from '../../Context/AuthContext';
  
@@ -8,6 +8,7 @@ import { AuthorContext } from '../../Context/AuthContext';
 const SingUp = () => {
 
     const {createUser} = useContext(AuthorContext)
+    const navigate = useNavigate();
 
     const handleSingUp = event =>{
         event.preventDefault();
@@ -19,6 +20,7 @@ const SingUp = () => {
         createUser(email,password)
         .then(resualt =>{
             const user = resualt.user;
+            navigate('/')
             console.log(user)
         })
         .catch(error =>{

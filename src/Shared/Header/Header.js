@@ -2,14 +2,25 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg'
 import { AuthorContext } from '../../Context/AuthContext';
+
+
 const Header = () => {
-    const {user} = useContext(AuthorContext)
+    const {user, logout} = useContext(AuthorContext)
+
+    const handdleLogOut = () => {
+        logout()
+        .then(res =>res.json())
+        .catch(err => console.log(err))
+    }
+
     const menubar = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
-       
         {
             (user?.email) ?
+            <>
             <li className='font-semibold'><Link to='/orders'>My Orders</Link></li>
+            <button className='btn goast' onClick={handdleLogOut}>Log Out</button>
+            </>
             :
             <>
             <li className='font-semibold'><Link to='/login'>Login</Link></li>

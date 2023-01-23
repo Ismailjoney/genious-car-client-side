@@ -41,9 +41,7 @@ const Checkout = () => {
                     })
                 }
                 form.reset()
-                console.log(data)
             })
-
     }
 
     return (
@@ -58,7 +56,6 @@ const Checkout = () => {
                     <input name="email" type="text" placeholder="Your email" defaultValue={user?.email} className="input input-ghost w-full  input-bordered" readOnly />
                 </div>
                 <textarea name="message" className="textarea textarea-bordered h-24 w-full mt-10 my-5" placeholder="Your Message" required></textarea>
-
                 <input className='btn' type="submit" value="Place Your Order" />
             </form>
         </div>

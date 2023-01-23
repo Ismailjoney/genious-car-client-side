@@ -31,7 +31,7 @@ import PrivetRoute from "./PrivetRoute/PrivetRoute";
             },
             {
                 path:'/orders',
-                element:<Orders></Orders>
+                element:<PrivetRoute><Orders></Orders></PrivetRoute>
             }
         ]
     }
