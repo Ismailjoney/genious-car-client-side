@@ -50,9 +50,6 @@ const Header = () => {
                     {menubar}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <button className="btn btn-outline btn-accent">Button</button>
-            </div>
         </div>
     );
 };
